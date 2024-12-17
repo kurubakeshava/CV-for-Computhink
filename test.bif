@@ -1,0 +1,9 @@
+[Documents File]
+[documents]
+document1=CVReports	"C:\AIPfolder\*.pdf"
+doc1.fields=ReportName
+doc1.field1=test_0010
+doc1.location=Newfolder
+doc1.create_location=True
+doc1.append=True
+doc1.delete_images=False
