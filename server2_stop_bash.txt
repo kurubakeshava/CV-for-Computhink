@@ -1,2 +1,0 @@
-NET STOP ContentverseStorage
-NET STOP ContentverseService
