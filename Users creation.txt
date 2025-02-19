@@ -1,0 +1,53 @@
+@echo off
+ 
+REM Create the groups
+net localgroup cvadmins /add
+net localgroup cvconcurrent /add
+net localgroup cvaips /add
+ 
+REM Create the users with a password
+net user cvadmin "vw" /add /passwordchg:no /passwordreq:yes
+net user cvuser "vw" /add /passwordchg:no /passwordreq:yes
+net user cvuser1 "vw" /add /passwordchg:no /passwordreq:yes
+net user cvuser2 "vw" /add /passwordchg:no /passwordreq:yes
+net user cvaip "vw" /add /passwordchg:no /passwordreq:yes
+ 
+REM Set the additional properties for cvadmin
+wmic useraccount where "name='cvadmin'" set PasswordExpires=false
+wmic useraccount where "name='cvadmin'" set PasswordChangeable=false
+ 
+REM Set the additional properties for cvuser
+wmic useraccount where "name='cvuser'" set PasswordExpires=false
+wmic useraccount where "name='cvuser'" set PasswordChangeable=false
+ 
+REM Set the additional properties for cvuser
+wmic useraccount where "name='cvuser1'" set PasswordExpires=false
+wmic useraccount where "name='cvuser1'" set PasswordChangeable=false
+ 
+REM Set the additional properties for cvuser
+wmic useraccount where "name='cvuser2'" set PasswordExpires=false
+wmic useraccount where "name='cvuser2'" set PasswordChangeable=false
+ 
+REM Set the additional properties for cvuser
+wmic useraccount where "name='cvaip'" set PasswordExpires=false
+wmic useraccount where "name='cvaip'" set PasswordChangeable=false
+ 
+REM Add cvadmin to cvadmins group and Administrators group
+net localgroup cvadmins cvadmin /add
+net localgroup Administrators cvadmin /add
+ 
+REM Add cvuser to cvconcurrent group
+net localgroup cvconcurrent cvuser /add
+ 
+REM Add cvuser to cvconcurrent group
+net localgroup cvconcurrent cvuser1 /add
+ 
+REM Add cvuser to cvconcurrent group
+net localgroup cvconcurrent cvuser2 /add
+ 
+REM Add cvuser to cvaip group
+net localgroup cvaips cvaip /add
+ 
+echo Users and groups have been created successfully with specified password settings.
+pause
+ 
